@@ -1,10 +1,10 @@
 resource "routeros_system_identity" "identity" {
-  name = "vcluster-edge"
+  name = "matrix-edge"
 }
 
 resource "routeros_ip_dns" "dns" {
   allow_remote_requests = true
-  servers               = ["169.254.254.1"]
+  servers               = ["8.8.8.8"]
 }
 
 resource "routeros_ip_service" "disabled" {
