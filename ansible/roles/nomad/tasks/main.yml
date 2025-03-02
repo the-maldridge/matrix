@@ -1,0 +1,21 @@
+---
+- name: Install Packages
+  xbps:
+    pkg: nomad
+    state: present
+
+- name: Install base config
+  template:
+    src: 10-base.hcl.j2
+    dest: /etc/nomad.d/10-base.hcl
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - nomad
+
+- name: Enable Service
+  service:
+    name: nomad
+    state: started
+    enabled: true

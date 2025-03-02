@@ -1,0 +1,17 @@
+client {
+  enabled = true
+  cni_path = "/usr/libexec/cni"
+  cni_config_dir = "/etc/cni/net.d"
+{% if nomad_server_join is defined %}
+  server_join {
+    retry_join = {{ nomad_server_join | to_json }}
+  }
+{% endif %}
+{% for volume in nomad_volumes|default([]) %}
+
+  host_volume "{{volume.name}}" {
+    path = "{{volume.path}}"
+    read_only = {{volume.read_only|bool|lower}}
+  }
+{% endfor %}
+}

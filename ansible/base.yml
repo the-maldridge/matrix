@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  roles:
+    - ssh_keys
+    - xbps-repoconf
+    - void.network.dns
+    - chrony

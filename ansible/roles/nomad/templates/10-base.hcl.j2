@@ -1,0 +1,15 @@
+data_dir = "/var/lib/nomad"
+plugin_dir = "/usr/libexec/nomad"
+
+acl {
+  enabled = true
+}
+
+advertise {
+  http = "{{nomad_advertise|default(ansible_default_ipv4.address)}}"
+  rpc  = "{{nomad_advertise|default(ansible_default_ipv4.address)}}"
+  serf = "{{nomad_advertise|default(ansible_default_ipv4.address)}}"
+}
+
+datacenter = "{{nomad_datacenter}}"
+region = "{{nomad_region}}"

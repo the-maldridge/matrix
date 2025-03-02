@@ -1,0 +1,17 @@
+---
+network_input_policy: ACCEPT
+network_forward_policy: ACCEPT
+network_output_policy: ACCEPT
+
+network_hostname: "{{ inventory_hostname }}.matrix.michaelwashere.net"
+
+xbps_repository_address: repo-fastly.voidlinux.org
+xbps_repository_main: "https://{{ xbps_repository_address }}/current/musl"
+xbps_repository_nonfree: "{{xbps_repository_main }}/nonfree"
+xbps_repository_port: 443
+
+xbps_repoconf_repos_enabled:
+  - 00-repository-main
+  - 10-repository-nonfree
+
+nomad_region: global

@@ -1,0 +1,10 @@
+---
+- name: Install Server Config
+  template:
+    src: 20-server.hcl.j2
+    dest: /etc/nomad.d/20-server.hcl
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - nomad

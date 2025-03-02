@@ -1,0 +1,11 @@
+---
+- name: Install Packages
+  community.general.xbps:
+    pkg: chrony
+    state: present
+
+- name: Enable Service
+  ansible.builtin.service:
+    name: chronyd
+    state: started
+    enabled: true

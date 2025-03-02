@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: false
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Install Python3
+      ansible.builtin.raw: xbps-install -Sy python3
