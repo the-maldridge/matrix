@@ -38,7 +38,7 @@ job "proxy" {
           "--ping=true",
           "--providers.nomad.refreshInterval=30s",
           "--providers.nomad.endpoint.address=unix://${NOMAD_SECRETS_DIR}/api.sock",
-          "--providers.nomad.defaultRule='Host(`{{ .Name }}.matrix.michaelwashere.net`)'"
+          "--providers.nomad.defaultRule=Host(`{{ .Name }}.matrix.michaelwashere.net`)"
         ]
       }
     }

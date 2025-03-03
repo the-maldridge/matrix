@@ -1,0 +1,4 @@
+{{define "hdd.ipxe" -}}
+#!ipxe
+sanboot --no-describe --drive 0x80
+{{end}}

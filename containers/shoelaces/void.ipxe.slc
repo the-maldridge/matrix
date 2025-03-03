@@ -1,0 +1,7 @@
+{{define "void.ipxe" -}}
+#!ipxe
+imgfree
+kernel http://{{.baseURL}}/configs/static/void/vmlinuz root=vai auto autourl=http://{{.baseURL}}/configs/static/void/autoinstall.cfg loglevel=4 vconsole.unicode=1 vconsole.keymap=us
+initrd http://{{.baseURL}}/configs/static/void/initrd
+boot
+{{end}}
