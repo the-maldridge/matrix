@@ -2,6 +2,10 @@ static_hosts = {
   matrix-core = {
     mac  = "8c:dc:d4:47:8d:74"
     addr = "192.168.32.2"
+    cname = [
+      "proxy",
+      "shoelaces",
+    ]
   }
 
   node1 = {
