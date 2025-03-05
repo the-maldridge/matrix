@@ -16,3 +16,6 @@ xbps_repoconf_repos_enabled:
   - 10-repository-nonfree
 
 nomad_region: global
+
+docker_insecure_registries:
+  - registry.matrix.michaelwashere.net:5000

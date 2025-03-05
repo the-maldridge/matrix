@@ -1,15 +1,4 @@
 ---
-- name: Install Packages
-  xbps:
-    pkg: docker
-    state: present
-
-- name: Enable Docker
-  ansible.builtin.service:
-    name: docker
-    state: started
-    enabled: true
-
 - name: Install Client Config
   template:
     src: 20-client.hcl.j2

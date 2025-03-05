@@ -5,6 +5,7 @@ static_hosts = {
     cname = [
       "proxy",
       "shoelaces",
+      "registry",
     ]
   }
 

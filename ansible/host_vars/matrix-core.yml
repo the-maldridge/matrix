@@ -6,3 +6,8 @@ nomad_datacenter: MATRIX-CONTROL
 nomad_extra_caps:
   - net_admin
   - net_raw
+
+nomad_volumes:
+  - name: zot_data
+    path: /nomad/zot
+    read_only: false

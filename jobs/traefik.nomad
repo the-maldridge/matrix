@@ -5,7 +5,7 @@ job "proxy" {
 
   group "traefik" {
     network {
-      mode = "bridge"
+      mode = "host"
       port "http" { static = 80 }
       port "metrics" { static = 8080 }
     }
@@ -29,6 +29,7 @@ job "proxy" {
 
       config {
         image = "traefik:v3.3.4"
+        network_mode = "host"
 
         args = [
           "--accesslog=false",

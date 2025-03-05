@@ -1,0 +1,6 @@
+---
+- name: Restart Docker Daemon
+  listen: docker
+  ansible.builtin.runit:
+    name: docker
+    state: restarted

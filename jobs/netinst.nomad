@@ -14,7 +14,7 @@ job "netinst" {
       driver = "docker"
 
       config {
-        image = "matrix/dnsmasq:1"
+        image = "registry.matrix.michaelwashere.net:5000/netinst/pxe:1"
         network_mode = "host"
         cap_add = ["NET_ADMIN", "NET_RAW"]
       }
@@ -39,7 +39,7 @@ job "netinst" {
       driver = "docker"
 
       config {
-        image = "matrix/shoelaces:1"
+        image = "registry.matrix.michaelwashere.net:5000/netinst/shoelaces:1"
         args = ["-bind-addr=0.0.0.0:8081", "-base-url=${NOMAD_IP_http}:8081"]
       }
     }

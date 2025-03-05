@@ -1,0 +1,24 @@
+---
+- name: Install Packages
+  community.general.xbps:
+    pkg: docker
+    state: present
+
+- name: Enable Service
+  ansible.builtin.runit:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Configure Daemon
+  ansible.builtin.copy:
+    content: "{{ docker_daemon_config | to_json }}\n"
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: "0644"
+  vars:
+    docker_daemon_config:
+      insecure-registries: "{{ docker_insecure_registries }}"
+  notify:
+    - docker
