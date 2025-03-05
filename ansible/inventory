@@ -1,5 +1,9 @@
 [nomad:children]
 nomad_server
+nomad_client
 
 [nomad_server]
 matrix-core
+
+[nomad_client]
+node[1:10]

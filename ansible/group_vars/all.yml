@@ -4,6 +4,7 @@ network_forward_policy: ACCEPT
 network_output_policy: ACCEPT
 
 network_hostname: "{{ inventory_hostname }}.matrix.michaelwashere.net"
+ansible_host: "{{ network_hostname }}"
 
 xbps_repository_address: repo-fastly.voidlinux.org
 xbps_repository_main: "https://{{ xbps_repository_address }}/current/musl"
