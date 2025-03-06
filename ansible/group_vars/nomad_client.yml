@@ -1,2 +1,5 @@
 ---
 nomad_datacenter: MATRIX
+
+nomad_server_join:
+  - matrix-core.matrix.michaelwashere.net
