@@ -11,3 +11,6 @@ nomad_volumes:
   - name: zot_data
     path: /nomad/zot
     read_only: false
+  - name: vmlogs_data
+    path: /nomad/vmlogs
+    read_only: false
