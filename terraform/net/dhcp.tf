@@ -59,3 +59,14 @@ resource "routeros_ip_dns_record" "static_cnames" {
   type  = "CNAME"
   cname = format("%s.%s", each.value, "matrix.michaelwashere.net")
 }
+
+resource "routeros_ip_dns_record" "self" {
+  for_each = toset([
+    "edge",
+    "net-available",
+  ])
+
+  name    = format("%s.%s", each.key, "matrix.michaelwashere.net")
+  address = split("/", routeros_ip_address.local.address)[0]
+  type    = "A"
+}

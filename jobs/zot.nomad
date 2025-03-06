@@ -7,7 +7,7 @@ job "zot" {
     count = 1
 
     network {
-      mode = "host"
+      mode = "bridge"
       port "http" { static = 5000 }
     }
 
@@ -29,7 +29,6 @@ job "zot" {
 
       config {
         image = "ghcr.io/project-zot/zot-linux-amd64:v2.1.2"
-        network_mode = "host"
         args = ["serve", "/local/config.json"]
       }
 

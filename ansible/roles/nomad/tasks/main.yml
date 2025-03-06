@@ -14,6 +14,14 @@
   notify:
     - nomad
 
+- name: Install Service Config
+  template:
+    src: conf.j2
+    dest: /etc/sv/nomad/conf
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Enable Service
   service:
     name: nomad

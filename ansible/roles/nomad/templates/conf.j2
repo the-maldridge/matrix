@@ -1,0 +1,5 @@
+#!/bin/sh
+
+while ! getent hosts {{ nomad_netdetect_name|default("localhost") }} ; do
+    sleep 5
+done

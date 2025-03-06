@@ -17,5 +17,7 @@ xbps_repoconf_repos_enabled:
 
 nomad_region: global
 
+nomad_netdetect_name: net-available.matrix.michaelwashere.net
+
 docker_insecure_registries:
   - registry.matrix.michaelwashere.net:5000
