@@ -10,6 +10,14 @@
     state: started
     enabled: true
 
+- name: Ensure /etc/docker Exists
+  ansible.builtin.file:
+    path: /etc/docker
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+
 - name: Configure Daemon
   ansible.builtin.copy:
     content: "{{ docker_daemon_config | to_json }}\n"
