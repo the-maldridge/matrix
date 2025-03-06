@@ -15,6 +15,7 @@ job "netinst" {
 
       config {
         image = "registry.matrix.michaelwashere.net:5000/netinst/pxe:1"
+        force_pull = true
         network_mode = "host"
         cap_add = ["NET_ADMIN", "NET_RAW"]
       }
@@ -40,6 +41,7 @@ job "netinst" {
 
       config {
         image = "registry.matrix.michaelwashere.net:5000/netinst/shoelaces:1"
+        force_pull = true
         args = ["-bind-addr=0.0.0.0:8081", "-base-url=${NOMAD_IP_http}:8081"]
       }
     }
