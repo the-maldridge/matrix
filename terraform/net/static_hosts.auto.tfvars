@@ -6,6 +6,7 @@ static_hosts = {
       "proxy",
       "shoelaces",
       "registry",
+      "logs",
     ]
   }
 
