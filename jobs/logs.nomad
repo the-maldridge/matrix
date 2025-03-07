@@ -9,7 +9,7 @@ job "vmlogs" {
     network {
       mode = "bridge"
       port "http" { to = 9428 }
-      port "syslog" { to = 514 }
+      port "syslog" { static = 514 }
     }
 
     service {
