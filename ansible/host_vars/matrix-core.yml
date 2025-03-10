@@ -14,3 +14,6 @@ nomad_volumes:
   - name: vmlogs_data
     path: /nomad/vmlogs
     read_only: false
+  - name: ara_data
+    path: /nomad/ara
+    read_only: false

@@ -3,10 +3,11 @@ static_hosts = {
     mac  = "8c:dc:d4:47:8d:74"
     addr = "192.168.32.2"
     cname = [
-      "proxy",
-      "shoelaces",
-      "registry",
+      "ara",
       "logs",
+      "proxy",
+      "registry",
+      "shoelaces",
     ]
   }
 
