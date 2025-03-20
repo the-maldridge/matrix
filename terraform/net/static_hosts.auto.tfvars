@@ -5,6 +5,7 @@ static_hosts = {
     cname = [
       "ara",
       "logs",
+      "nomad",
       "proxy",
       "registry",
       "shoelaces",
