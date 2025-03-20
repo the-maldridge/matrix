@@ -38,8 +38,32 @@ job "proxy" {
           "--ping=true",
           "--providers.nomad.refreshInterval=30s",
           "--providers.nomad.endpoint.address=unix://${NOMAD_SECRETS_DIR}/api.sock",
-          "--providers.nomad.defaultRule=Host(`{{ .Name }}.matrix.michaelwashere.net`)"
+          "--providers.nomad.defaultRule=Host(`{{ .Name }}.matrix.michaelwashere.net`)",
+          "--providers.file.filename=/local/config.yaml",
         ]
+      }
+
+      template {
+        data = yamlencode({
+          http = {
+            services = {
+              nomad = {
+                loadBalancer = {
+                  servers = [
+                    {url = "http://172.26.64.1:4646"},
+                  ]
+                }
+              }
+            }
+            routers = {
+              nomad = {
+                rule = "Host(`nomad.matrix.michaelwashere.net`)"
+                service = "nomad"
+              }
+            }
+          }
+        })
+        destination = "local/config.yaml"
       }
     }
   }
