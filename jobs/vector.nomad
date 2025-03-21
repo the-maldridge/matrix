@@ -55,7 +55,9 @@ job "vector" {
               healthcheck = { enabled = false }
               query = {
                 "_time_field" = "timestamp"
-                "_stream_fields" = "label.com.hashicorp.nomad.namespace,label.com.hashicorp.nomad.job_name,label.hashicorp.nomad.task_group_name,label.com.hashicorp.nomad.task_name,label.com.hashicorp.nomad.alloc_id"
+                "_stream_fields" = join(",", formatlist("label.com.hashicorp.nomad.%s", [
+                  "namespace", "job_name", "task_group_name", "task_name", "alloc_id",
+                ]))
                 "_msg_field" = "message"
               }
             }
