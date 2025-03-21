@@ -39,6 +39,7 @@ job "zot" {
 
       template {
         data = jsonencode({
+          distSpecVersion = "1.1.1"
           storage = {
             rootDirectory = "/data"
           }
