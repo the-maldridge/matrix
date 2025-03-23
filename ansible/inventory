@@ -5,5 +5,12 @@ nomad_client
 [nomad_server]
 matrix-core
 
-[nomad_client]
+[nomad_client:children]
+nomad_client_small
+nomad_client_large
+
+[nomad_client_small]
 node[1:10]
+
+[nomad_client_large]
+node[11:13]
