@@ -17,3 +17,6 @@ nomad_volumes:
   - name: ara_data
     path: /nomad/ara
     read_only: false
+  - name: terrastate_data
+    path: /nomad/terrastate
+    read_only: false
