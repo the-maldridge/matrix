@@ -7,7 +7,7 @@ resource "nomad_acl_policy" "proxy" {
 
   rules_hcl = <<EOT
 namespace "*" {
-  policy = "read"
+  capabilities = ["list-jobs"]
 }
 EOT
 }
