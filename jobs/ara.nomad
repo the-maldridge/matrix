@@ -1,6 +1,6 @@
 job "ara" {
-  name = "ara"
-  type = "service"
+  name        = "ara"
+  type        = "service"
   datacenters = ["MATRIX-CONTROL"]
 
   group "ara" {
@@ -12,15 +12,15 @@ job "ara" {
     }
 
     service {
-      name = "ara"
-      port = "http"
+      name     = "ara"
+      port     = "http"
       provider = "nomad"
-      tags = ["traefik.enable=true"]
+      tags     = ["traefik.enable=true"]
     }
 
     volume "ara_data" {
-      type = "host"
-      source = "ara_data"
+      type      = "host"
+      source    = "ara_data"
       read_only = false
     }
 
@@ -36,7 +36,7 @@ job "ara" {
       }
 
       volume_mount {
-        volume = "ara_data"
+        volume      = "ara_data"
         destination = "/opt/ara"
       }
     }

@@ -1,6 +1,6 @@
 job "vmlogs" {
-  name = "vmlogs"
-  type = "service"
+  name        = "vmlogs"
+  type        = "service"
   datacenters = ["MATRIX-CONTROL"]
 
   group "vmlogs" {
@@ -13,15 +13,15 @@ job "vmlogs" {
     }
 
     service {
-      name = "logs"
-      port = "http"
+      name     = "logs"
+      port     = "http"
       provider = "nomad"
-      tags = ["traefik.enable=true"]
+      tags     = ["traefik.enable=true"]
     }
 
     volume "vmlogs_data" {
-      type = "host"
-      source = "vmlogs_data"
+      type      = "host"
+      source    = "vmlogs_data"
       read_only = "false"
     }
 
@@ -38,7 +38,7 @@ job "vmlogs" {
       }
 
       volume_mount {
-        volume = "vmlogs_data"
+        volume      = "vmlogs_data"
         destination = "/data"
       }
     }

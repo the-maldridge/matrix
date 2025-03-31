@@ -1,10 +1,10 @@
 job "ansible" {
-  name = "ansible"
-  type = "sysbatch"
+  name        = "ansible"
+  type        = "sysbatch"
   datacenters = ["MATRIX-CONTROL", "MATRIX"]
 
   parameterized {
-    payload = "forbidden"
+    payload       = "forbidden"
     meta_required = ["COMMIT", "ANSIBLE_PLAYBOOK"]
     meta_optional = []
   }
@@ -17,10 +17,10 @@ job "ansible" {
     task "ansible" {
       driver = "docker"
       config {
-        image = "registry.matrix.michaelwashere.net:5000/ansible/ansible:${NOMAD_META_COMMIT}"
+        image        = "registry.matrix.michaelwashere.net:5000/ansible/ansible:${NOMAD_META_COMMIT}"
         network_mode = "host"
-        privileged = true
-        command = "/ansible/venv/bin/ansible-playbook"
+        privileged   = true
+        command      = "/ansible/venv/bin/ansible-playbook"
         args = [
           "-D", "${NOMAD_META_ANSIBLE_PLAYBOOK}",
           "-c", "community.general.chroot",

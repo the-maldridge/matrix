@@ -1,7 +1,7 @@
 job "netinst" {
-  name = "netinst"
+  name        = "netinst"
   datacenters = ["MATRIX-CONTROL"]
-  type = "service"
+  type        = "service"
 
   group "pxe" {
     count = 1
@@ -14,10 +14,10 @@ job "netinst" {
       driver = "docker"
 
       config {
-        image = "registry.matrix.michaelwashere.net:5000/netinst/pxe:1"
-        force_pull = true
+        image        = "registry.matrix.michaelwashere.net:5000/netinst/pxe:1"
+        force_pull   = true
         network_mode = "host"
-        cap_add = ["NET_ADMIN", "NET_RAW"]
+        cap_add      = ["NET_ADMIN", "NET_RAW"]
       }
     }
   }
@@ -30,19 +30,19 @@ job "netinst" {
     }
 
     service {
-      name = "shoelaces"
-      port = "http"
+      name     = "shoelaces"
+      port     = "http"
       provider = "nomad"
-      tags = ["traefik.enable=true"]
+      tags     = ["traefik.enable=true"]
     }
 
     task "shoelaces" {
       driver = "docker"
 
       config {
-        image = "registry.matrix.michaelwashere.net:5000/netinst/shoelaces:1"
+        image      = "registry.matrix.michaelwashere.net:5000/netinst/shoelaces:1"
         force_pull = true
-        args = ["-bind-addr=0.0.0.0:8081", "-base-url=${NOMAD_IP_http}:8081"]
+        args       = ["-bind-addr=0.0.0.0:8081", "-base-url=${NOMAD_IP_http}:8081"]
       }
     }
   }

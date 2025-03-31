@@ -1,6 +1,6 @@
 job "zot" {
-  name = "zot"
-  type = "service"
+  name        = "zot"
+  type        = "service"
   datacenters = ["MATRIX-CONTROL"]
 
   group "zot" {
@@ -12,15 +12,15 @@ job "zot" {
     }
 
     service {
-      name = "registry"
-      port = "http"
+      name     = "registry"
+      port     = "http"
       provider = "nomad"
-      tags = ["traefik.enable=true"]
+      tags     = ["traefik.enable=true"]
     }
 
     volume "zot_data" {
-      type = "host"
-      source = "zot_data"
+      type      = "host"
+      source    = "zot_data"
       read_only = false
     }
 
@@ -29,11 +29,11 @@ job "zot" {
 
       config {
         image = "ghcr.io/project-zot/zot-linux-amd64:v2.1.2"
-        args = ["serve", "/local/config.json"]
+        args  = ["serve", "/local/config.json"]
       }
 
       volume_mount {
-        volume = "zot_data"
+        volume      = "zot_data"
         destination = "/data"
       }
 
@@ -45,12 +45,12 @@ job "zot" {
           }
           http = {
             address = "0.0.0.0"
-            port = 5000
-            compat = ["docker2s2"]
+            port    = 5000
+            compat  = ["docker2s2"]
           }
           extensions = {
             search = { enable = true }
-            ui = { enable = true }
+            ui     = { enable = true }
           }
         })
         destination = "local/config.json"

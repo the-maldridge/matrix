@@ -9,6 +9,7 @@ static_hosts = {
       "proxy",
       "registry",
       "shoelaces",
+      "terrastate",
     ]
   }
 

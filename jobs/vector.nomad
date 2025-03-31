@@ -1,6 +1,6 @@
 job "vector" {
-  name = "vector"
-  type = "system"
+  name        = "vector"
+  type        = "system"
   datacenters = ["MATRIX", "MATRIX-CONTROL"]
 
   group "vector" {
@@ -21,7 +21,7 @@ job "vector" {
 
       config {
         image = "docker.io/timberio/vector:0.45.0-alpine"
-        args = ["-c", "/local/vector.yaml"]
+        args  = ["-c", "/local/vector.yaml"]
       }
 
       resources {
@@ -47,9 +47,9 @@ job "vector" {
           }
           sinks = {
             vlogs = {
-              type = "elasticsearch"
-              inputs = ["docker"]
-              endpoints = ["http://logs.matrix.michaelwashere.net/insert/elasticsearch/"]
+              type        = "elasticsearch"
+              inputs      = ["docker"]
+              endpoints   = ["http://logs.matrix.michaelwashere.net/insert/elasticsearch/"]
               api_version = "v8"
               compression = "gzip"
               healthcheck = { enabled = false }

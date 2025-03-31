@@ -1,7 +1,7 @@
 job "proxy" {
-  name = "proxy"
+  name        = "proxy"
   datacenters = ["MATRIX-CONTROL"]
-  type = "system"
+  type        = "system"
 
   group "traefik" {
     network {
@@ -11,7 +11,7 @@ job "proxy" {
     }
 
     service {
-      port = "http"
+      port     = "http"
       provider = "nomad"
       tags = [
         "traefik.http.routers.dashboard.rule=Host(`proxy.matrix.michaelwashere.net`)",
@@ -23,7 +23,7 @@ job "proxy" {
       driver = "docker"
 
       identity {
-        env = true
+        env         = true
         change_mode = "restart"
       }
 
@@ -50,14 +50,14 @@ job "proxy" {
               nomad = {
                 loadBalancer = {
                   servers = [
-                    {url = "http://172.26.64.1:4646"},
+                    { url = "http://172.26.64.1:4646" },
                   ]
                 }
               }
             }
             routers = {
               nomad = {
-                rule = "Host(`nomad.matrix.michaelwashere.net`)"
+                rule    = "Host(`nomad.matrix.michaelwashere.net`)"
                 service = "nomad"
               }
             }
