@@ -57,7 +57,7 @@ EOF
 
       template {
         data        = <<EOF
-terrastate-tls: maldridge,_terraform
+terrastate-tls: maldridge _terraform
 terrastate-routeros: maldridge
 terrastate-nomad: maldridge
 EOF
