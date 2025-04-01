@@ -7,6 +7,7 @@ job "proxy" {
     network {
       mode = "bridge"
       port "http" { static = 80 }
+      port "https" { static = 443 }
       port "metrics" { static = 8080 }
     }
 
@@ -34,6 +35,11 @@ job "proxy" {
           "--accesslog=false",
           "--api.dashboard",
           "--entrypoints.http.address=:80",
+          "--entrypoints.https.address=:443",
+          "--entryPoints.https.http.tls.certResolver=default",
+          "--entryPoints.https.asDefault=true",
+          "--entryPoints.http.http.redirections.entryPoint.to=https",
+          "--entryPoints.http.http.redirections.entryPoint.scheme=https",
           "--metrics.prometheus",
           "--ping=true",
           "--providers.nomad.refreshInterval=30s",
@@ -45,6 +51,16 @@ job "proxy" {
 
       template {
         data = yamlencode({
+          tls = {
+            stores = {
+              default = {
+                defaultCertificate = {
+                  certFile = "/secrets/cert.pem"
+                  keyFile = "/secrets/cert.key"
+                }
+              }
+            }
+          }
           http = {
             services = {
               nomad = {
@@ -64,6 +80,24 @@ job "proxy" {
           }
         })
         destination = "local/config.yaml"
+      }
+
+      template {
+        data = <<EOT
+{{- with nomadVar "nomad/jobs/proxy" -}}
+{{ .certificate }}
+{{- end }}
+EOT
+        destination = "secrets/cert.pem"
+      }
+
+      template {
+        data = <<EOT
+{{- with nomadVar "nomad/jobs/proxy" -}}
+{{ .key }}
+{{- end }}
+EOT
+        destination = "secrets/cert.key"
       }
     }
   }
