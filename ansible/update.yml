@@ -13,3 +13,8 @@
     - name: Update System
       community.general.xbps:
         upgrade: true
+
+    - name: Restart SSHd
+      ansible.builtin.runit:
+        name: sshd
+        state: restarted
