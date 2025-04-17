@@ -1,0 +1,15 @@
+---
+- name: Update System
+  hosts: all
+  become: true
+  become_user: root
+  become_method: ansible.builtin.sudo
+  gather_facts: false
+  tasks:
+    - name: Update XBPS Cache
+      community.general.xbps:
+        update_cache: true
+
+    - name: Update System
+      community.general.xbps:
+        upgrade: true
