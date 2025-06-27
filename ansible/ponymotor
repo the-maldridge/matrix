@@ -1,0 +1,5 @@
+[nomad:children]
+nomad_server
+
+[nomad_server]
+pony0

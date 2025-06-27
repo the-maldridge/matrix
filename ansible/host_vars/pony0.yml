@@ -1,0 +1,23 @@
+---
+ansible_host: 192.168.16.5
+
+nomad_datacenter: MATRIX-CONTROL
+nomad_netdetect_name: localhost
+
+nomad_extra_caps:
+  - net_admin
+  - net_raw
+
+nomad_volumes:
+  - name: zot_data
+    path: /nomad/zot
+    read_only: false
+  - name: vmlogs_data
+    path: /nomad/vmlogs
+    read_only: false
+  - name: ara_data
+    path: /nomad/ara
+    read_only: false
+  - name: terrastate_data
+    path: /nomad/terrastate
+    read_only: false

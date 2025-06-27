@@ -5,5 +5,8 @@
   become_user: root
   become_method: sudo
   tasks:
+    - name: Update XBPS
+      ansible.builtin.raw: xbps-install -Suy xbps
+
     - name: Install Python3
       ansible.builtin.raw: xbps-install -Sy python3

@@ -1,3 +1,3 @@
 [submodule "ansible/roles/xbps-repoconf"]
 	path = ansible/roles/xbps-repoconf
-	url = https://github.com/void-ansible-roles/xbps_repoconf.git
+	url = https://github.com/void-ansible-roles/xbps-repoconf.git
