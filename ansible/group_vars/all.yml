@@ -22,3 +22,7 @@ nomad_netdetect_name: net-available.matrix.michaelwashere.net
 
 docker_insecure_registries:
   - registry.matrix.michaelwashere.net:5000
+
+network_boot_hosts:
+  - name: repo-fastly.voidlinux.org
+    addr: 151.101.1.91
