@@ -1,0 +1,10 @@
+---
+- name: Reboot Hosts
+  hosts: all
+  become: true
+  become_user: root
+  become_method: ansible.builtin.sudo
+  gather_facts: false
+  tasks:
+    - name: Reboot Host
+      ansible.builtin.reboot:
