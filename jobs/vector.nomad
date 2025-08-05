@@ -20,8 +20,10 @@ job "vector" {
       driver = "docker"
 
       config {
-        image = "docker.io/timberio/vector:0.45.0-alpine"
+        image = "docker.io/timberio/vector:0.48.0-alpine"
         args  = ["-c", "/local/vector.yaml"]
+        volumes = ["/dev:/dev"]
+        privileged = true
       }
 
       resources {
@@ -36,6 +38,9 @@ job "vector" {
 
       template {
         data = yamlencode({
+          api = {
+            enabled = true
+          }
           sources = {
             docker = {
               type = "docker_logs"
@@ -44,12 +49,17 @@ job "vector" {
                 "nomad_init_",
               ]
             }
+            syslog = {
+              type = "syslog"
+              mode = "unix"
+              path = "/dev/log"
+            }
           }
           sinks = {
             vlogs = {
               type        = "elasticsearch"
-              inputs      = ["docker"]
-              endpoints   = ["http://logs.matrix.michaelwashere.net/insert/elasticsearch/"]
+              inputs      = ["docker", "syslog"]
+              endpoints   = ["http://logs.matrix.michaelwashere.net:9428/insert/elasticsearch/"]
               api_version = "v8"
               compression = "gzip"
               healthcheck = { enabled = false }

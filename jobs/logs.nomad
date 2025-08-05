@@ -8,8 +8,7 @@ job "vmlogs" {
 
     network {
       mode = "bridge"
-      port "http" { to = 9428 }
-      port "syslog" { static = 514 }
+      port "http" { static = 9428 }
     }
 
     service {
@@ -32,8 +31,6 @@ job "vmlogs" {
         image = "docker.io/victoriametrics/victoria-logs:v1.15.0-victorialogs"
         args = [
           "-storageDataPath=/data",
-          "-syslog.listenAddr.tcp=:514",
-          "-syslog.listenAddr.udp=:514",
         ]
       }
 
